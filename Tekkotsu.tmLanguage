@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>fsm</string>
+	</array>
+	<key>name</key>
+	<string>Tekkotsu</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>source.c</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.c++</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Highlights the \$nodclass identifier</string>
+			<key>match</key>
+			<string>\$nodeclass</string>
+			<key>name</key>
+			<string>storage.type.fsm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Highlights the \$provide and \$reference identifier</string>
+			<key>match</key>
+			<string>(\$provide|\$reference)</string>
+			<key>name</key>
+			<string>storage.modifier.fsm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Highlights \$setupmachine and \$setup functions</string>
+			<key>match</key>
+			<string>(\$setupmachine|\$setup)</string>
+			<key>name</key>
+			<string>entity.name.function.fsm</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.fsm</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Highlights the doStart shortcut notation</string>
+			<key>match</key>
+			<string>(:\s*)(doStart)(\s*{)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.fsm</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(=\S+=&gt;)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.any-method.fsm</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Highlights the class name of instnaces in the setupmachine (instance: ClassName)</string>
+			<key>match</key>
+			<string>([a-z][a-zA-Z0-9_]*\s*:\s*)([A-Z][a-zA-Z0-9_]*)(
+)</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.fsm</string>
+	<key>uuid</key>
+	<string>5be1a6eb-a34b-4bc5-b89f-f164e1993bd5</string>
+</dict>
+</plist>
