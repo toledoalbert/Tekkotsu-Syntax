@@ -1,0 +1,6 @@
+{ "name": "Tekkotsu",
+  "scopeName": "source.syntax_name",
+  "fileTypes": ["fsm"],
+  "patterns": [  ],
+  "uuid": "dd93d49c-7b80-4f18-a0cc-29b4d18b1709"
+}
