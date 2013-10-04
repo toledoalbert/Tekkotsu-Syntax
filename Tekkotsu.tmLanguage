@@ -11,36 +11,48 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>include</key>
-			<string>source.c</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>source.c++</string>
+			<key>comment</key>
+			<string>Highlight for a $nodeclass declaration</string>
+			<key>match</key>
+			<string>(^|\s+)\$nodeclass\s+</string>
+			<key>name</key>
+			<string>storage.type.nodeclass.fsm</string>
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>Highlights the \$nodclass identifier</string>
+			<string>Highlights the $provide keyword</string>
 			<key>match</key>
-			<string>\$nodeclass</string>
+			<string>(^|\s+)\$provide\s+</string>
 			<key>name</key>
-			<string>storage.type.fsm</string>
+			<string>keyword.other.directive.provide.fsm</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.directive.reference.fsm</string>
+				</dict>
+			</dict>
 			<key>comment</key>
-			<string>Highlights the \$provide and \$reference identifier</string>
+			<string>Highlights the $reference keyword</string>
 			<key>match</key>
-			<string>(\$provide|\$reference)</string>
-			<key>name</key>
-			<string>storage.modifier.fsm</string>
+			<string>(^|\s*)(\$reference)\s+([A-Z][a-zA-Z0-9_]*)\:\:([a-z][a-zA-Z0-9_]*);\s*</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.doStart.fsm</string>
+				</dict>
+			</dict>
 			<key>comment</key>
-			<string>Highlights \$setupmachine and \$setup functions</string>
+			<string>Highlights the "doStart" portion in shorthand doStart declaration</string>
 			<key>match</key>
-			<string>(\$setupmachine|\$setup)</string>
-			<key>name</key>
-			<string>entity.name.function.fsm</string>
+			<string>\:\s+(doStart)</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -52,9 +64,9 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Highlights the doStart shortcut notation</string>
+			<string>Higlights $setup, $setupmachine, and $statemachine</string>
 			<key>match</key>
-			<string>(:\s*)(doStart)(\s*{)</string>
+			<string>(^|\s+)(\$((setup(machine)?)|(statemachine)))\s+</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -64,29 +76,49 @@
 					<key>name</key>
 					<string>entity.name.function.fsm</string>
 				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.fsm</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.specificTransValue.fsm</string>
+				</dict>
 			</dict>
+			<key>comment</key>
+			<string>Highlights transitions</string>
 			<key>match</key>
-			<string>(=\S+=&gt;)</string>
+			<string>\s+(=S&lt;([a-zA-Z0-9_\:]+)&gt;(\(([a-zA-Z0-9_]+)\))?=&gt;)\s+</string>
 		</dict>
 		<dict>
 			<key>captures</key>
 			<dict>
-				<key>2</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.any-method.fsm</string>
+					<string>entity.name.function.fsm</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.specificTransValue.fsm</string>
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Highlights the class name of instnaces in the setupmachine (instance: ClassName)</string>
+			<string>Highlights transitions</string>
 			<key>match</key>
-			<string>([a-z][a-zA-Z0-9_]*\s*:\s*)([A-Z][a-zA-Z0-9_]*)(
-)</string>
+			<string>\s+(=[A-Z]+(\(([a-zA-Z0-9_]+)\))?=&gt;)\s+</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.c++</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
 	<string>source.fsm</string>
 	<key>uuid</key>
-	<string>5be1a6eb-a34b-4bc5-b89f-f164e1993bd5</string>
+	<string>dd8b13f7-9e38-4809-8cbf-23a48921c3c2</string>
 </dict>
 </plist>

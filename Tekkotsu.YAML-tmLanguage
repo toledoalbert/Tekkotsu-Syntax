@@ -1,0 +1,60 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Tekkotsu
+scopeName: source.fsm
+fileTypes: [ fsm ]
+uuid: dd8b13f7-9e38-4809-8cbf-23a48921c3c2
+
+patterns:
+# defines matching regular expressions for Tekkotsu keywords, directives, and special functions
+- match:    (^|\s+)\$nodeclass\s+
+  name:     storage.type.nodeclass.fsm
+  comment:  Highlight for a $nodeclass declaration
+
+- match:    (^|\s+)\$provide\s+
+  name:     keyword.other.directive.provide.fsm
+  comment:  Highlights the $provide keyword
+
+- match:    (^|\s*)(\$reference)\s+([A-Z][a-zA-Z0-9_]*)\:\:([a-z][a-zA-Z0-9_]*);\s*
+  captures:
+    "2":
+      name: keyword.other.directive.reference.fsm
+  comment:  Highlights the $reference keyword
+
+- match:    \:\s+(doStart)
+  captures:
+    "1":
+      name: entity.name.function.doStart.fsm
+  comment:  Highlights the "doStart" portion in shorthand doStart declaration
+
+- match:    (^|\s+)(\$((setup(machine)?)|(statemachine)))\s+
+  captures:
+    "2":
+      name: entity.name.function.fsm
+  comment:  Higlights $setup, $setupmachine, and $statemachine
+
+# defines highlighting for transitions
+#- match:    (([a-z]|[A-Z])[a-zA-Z0-9_]*)\s+(=[A-Z]+(\([a-zA-Z0-9_]+\))?=>)\s+(([a-z]|[A-Z])[a-zA-Z0-9_]*)
+- match:    \s+(=S<([a-zA-Z0-9_\:]+)>(\(([a-zA-Z0-9_]+)\))?=>)\s+
+  captures:
+    "1":
+      name: entity.name.function.fsm
+    "2":
+      name: storage.type.fsm
+    "4":
+      name: constant.other.specificTransValue.fsm
+  comment:  Highlights transitions
+
+- match:    \s+(=[A-Z]+(\(([a-zA-Z0-9_]+)\))?=>)\s+
+  captures:
+    "1":
+      name: entity.name.function.fsm
+    "3":
+      name: constant.other.specificTransValue.fsm
+  comment:  Highlights transitions
+
+# - match:    (([a-z]|[A-Z])[a-zA-Z0-9_]*\(\s*[a-zA-Z0-9_]*\s*\))
+  # name:     support.function.any-method.fsm
+
+- include:  source.c++
+...
