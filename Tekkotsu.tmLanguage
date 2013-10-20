@@ -88,9 +88,9 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Highlights transitions</string>
+			<string>Highlights the different types of Signal Transitions</string>
 			<key>match</key>
-			<string>\s+(=S&lt;([a-zA-Z0-9_\:]+)&gt;(\(([a-zA-Z0-9_]+)\))?=&gt;)\s+</string>
+			<string>\s+(=S&lt;([a-zA-Z0-9_\:]+)&gt;(\(([a-zA-Z0-9_\:]+)\))?=&gt;)\s+</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -107,9 +107,28 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Highlights transitions</string>
+			<string>Highlights transitions such =F=&gt; (failure), =C=&gt; (Completion), =S=&gt; (Success), etc.</string>
 			<key>match</key>
 			<string>\s+(=[A-Z]+(\(([a-zA-Z0-9_]+)\))?=&gt;)\s+</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.fsm</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.fsm</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Highlights text message =TM("blah")=&gt; transitions</string>
+			<key>match</key>
+			<string>\s+(=TM(\(([a-zA-Z0-9 "]+)\))=&gt;)\s+</string>
 		</dict>
 		<dict>
 			<key>include</key>

@@ -33,9 +33,8 @@ patterns:
       name: entity.name.function.fsm
   comment:  Higlights $setup, $setupmachine, and $statemachine
 
-# defines highlighting for transitions
-#- match:    (([a-z]|[A-Z])[a-zA-Z0-9_]*)\s+(=[A-Z]+(\([a-zA-Z0-9_]+\))?=>)\s+(([a-z]|[A-Z])[a-zA-Z0-9_]*)
-- match:    \s+(=S<([a-zA-Z0-9_\:]+)>(\(([a-zA-Z0-9_]+)\))?=>)\s+
+# defines highlighting for transitions (only highlights a transition if it was WRITTEN correctly)
+- match:    \s+(=S<([a-zA-Z0-9_\:]+)>(\(([a-zA-Z0-9_\:]+)\))?=>)\s+
   captures:
     "1":
       name: entity.name.function.fsm
@@ -43,7 +42,7 @@ patterns:
       name: storage.type.fsm
     "4":
       name: constant.other.specificTransValue.fsm
-  comment:  Highlights transitions
+  comment:  Highlights the different types of Signal Transitions
 
 - match:    \s+(=[A-Z]+(\(([a-zA-Z0-9_]+)\))?=>)\s+
   captures:
@@ -51,10 +50,15 @@ patterns:
       name: entity.name.function.fsm
     "3":
       name: constant.other.specificTransValue.fsm
-  comment:  Highlights transitions
+  comment:  Highlights transitions such =F=> (failure), =C=> (Completion), =S=> (Success), etc.
 
-# - match:    (([a-z]|[A-Z])[a-zA-Z0-9_]*\(\s*[a-zA-Z0-9_]*\s*\))
-  # name:     support.function.any-method.fsm
+- match:    \s+(=TM(\(([a-zA-Z0-9 "]+)\))=>)\s+
+  captures:
+    "1":
+      name: entity.name.function.fsm
+    "3":
+      name: string.quoted.double.fsm
+  comment:  Highlights text message =TM("blah")=> transitions
 
 - include:  source.c++
 ...
